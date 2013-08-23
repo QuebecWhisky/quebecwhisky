@@ -1,0 +1,26 @@
+#menu {
+	background: #000000;
+	height: 45px;
+}
+
+#menu ul {
+	padding: 10px 0px;
+	list-style-type: none;
+}
+
+#menu ul  li {
+	float: left;
+	padding-right: 20px;
+	margin-right: 10px;
+	font: 1em candara, sans-serif;
+	text-transform: uppercase;
+	overflow: hidden;
+}
+
+#menu ul  li.dropdown {
+	background: url(../images/header/fleche_menu.png) no-repeat 100% 50%;
+}
+
+#menu ul  li a {
+	color: #FFFFFF;
+}

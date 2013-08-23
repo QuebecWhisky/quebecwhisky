@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<import resource="classpath:ctx/baseCtx.xml" />
+
+	<!-- ORM -->
+	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jpa.db.driverClassName}" />
+		<property name="url" value="${jpa.db.url}" />
+		<property name="username" value="${jpa.db.username}" />
+		<property name="password" value="${jpa.db.password}" />
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="10" />
+	</bean-->
+
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jpa.db.driverClassName}" />
+		<property name="jdbcUrl" value="${jpa.db.url}" />
+		<property name="username" value="${jpa.db.username}" />
+		<property name="password" value="${jpa.db.password}" />
+		<property name="idleConnectionTestPeriodInMinutes" value="10" />
+		<property name="idleMaxAgeInMinutes" value="30" />
+		<property name="maxConnectionsPerPartition" value="10" />
+		<property name="minConnectionsPerPartition" value="1" />
+		<property name="partitionCount" value="3" />
+		<property name="acquireIncrement" value="2" />
+		<property name="statementsCacheSize" value="100" />
+		<property name="releaseHelperThreads" value="3" />
+	</bean>
+
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<table name="news">
+		<column>title</column>
+		<column>description</column>
+		<column>author</column>
+		<column>created</column>
+		<row>
+			<value>news1</value>
+			<value>desc news 1</value>
+			<value>jps</value>
+			<value>2013-04-21 00:00:00.0</value>
+		</row>
+		<row>
+			<value>news2</value>
+			<value>desc news 2</value>
+			<value>jps</value>
+			<value>2013-04-20 00:00:00.0</value>
+		</row>
+		<row>
+			<value>news3</value>
+			<value>desc news 3</value>
+			<value>jps</value>
+			<value>2013-04-22 00:00:00.0</value>
+		</row>
+	</table>
+
+</dataset>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<table name="activity">
+		<column>title</column>
+		<column>date</column>
+		<column>category</column>
+		<column>registrationUrl</column>
+		<column>description</column>
+		<row>
+			<value>activity1</value>
+			<value>2013-04-21 00:00:00.0</value>
+			<value>TASTING</value>
+			<value>#</value>
+			<value>activity desc 1</value>
+		</row>
+		<row>
+			<value>activity2</value>
+			<value>2013-04-20 00:00:00.0</value>
+			<value>TASTING</value>
+			<value>#</value>
+			<value>activity desc 2</value>
+		</row>
+		<row>
+			<value>activity3</value>
+			<value>2013-04-22 00:00:00.0</value>
+			<value>TASTING</value>
+			<value>#</value>
+			<value>activity desc 3</value>
+		</row>
+	</table>
+
+</dataset>

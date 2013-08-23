@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+   <table name="bottle">
+      <column>name</column>
+      <row>
+         <value>Aberlour</value>
+      </row>
+   </table>
+
+</dataset>

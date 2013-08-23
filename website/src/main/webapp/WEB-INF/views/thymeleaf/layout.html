@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../resources/css/base.css" th:href="@{/resources/css/base.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" th:href="@{/resources/css/header.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/menu.css" th:href="@{/resources/css/menu.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/body.css" th:href="@{/resources/css/body.css}" />
+<link tiles:substituteby="css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/footer.css" th:href="@{/resources/css/footer.css}" />
+</head>
+<body>
+	<div id="header">
+		<div class="container">
+			<img id="logo" src="../../../resources/images/header/logo_club.png" th:src="@{/resources/images/header/logo_club.png}" alt="Logo Club Scotch Wisky Québec" />
+			<div id="acces_rapide">
+				<div id="media_sociaux">
+					<ul>
+						<li id="facebook"><a th:href="#{social.facebook.link}" href="http://www.facebook.com/pages/Club-de-Scotch-Whisky-de-Québec/169980319722992">facebook</a></li>
+						<!--li id="twitter"><a href="">twitter</a></li-->
+						<li id="rss"><a href="">rss</a></li>
+					</ul>
+					<span th:text="#{social.title}">suivez-nous</span>
+				</div>
+				<form id="site_search" action="#" th:action="@{/search/}" th:object="${search}" method="POST">
+					<input id="site_search_submit" type="submit" value="" />
+					<input id="site_keywords" type="search" required="true" th:field="*{keywords}" th:placeholder="#{search.tooltip}" placeholder="Recherche dans le site" />
+				</form>
+				<div id="sommaire">
+					<ul>
+						<li><a href="" th:text="#{summary.news}">Nouvelles</a></li>
+						<li><a href="" th:text="#{summary.newsletter}">Inscription à l'infolettre</a></li>
+						<li><a href="le_club.html" th:href="@{/club/}" th:text="#{summary.registration}">Inscription au club</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="menu">
+		<div class="container">
+			<ul>
+				<li class="dropdown"><a href="#" th:text="#{menu.evals}">Évaluations</a></li>
+				<li class="dropdown"><a href="#" th:text="#{menu.refs}">Reférences</a></li>
+				<li class="dropdown"><a href="#" th:text="#{menu.spirits}">Autres spiritueux</a></li>
+				<li class="dropdown"><a href="le_club.html" th:href="@{/club/}" th:text="#{menu.club}">Le club</a></li>
+				<li><a href="activities.html" th:href="@{/activity/}" th:text="#{menu.activities}">Activités</a></li>
+				<li><a href="" th:text="#{menu.medias}">Médias</a></li>
+				<li><a href="" th:text="#{menu.contacts}">Nous joindre</a></li>
+			</ul>
+		</div>
+	</div>
+	<div tiles:substituteby="content" />
+	<div id="footer">
+		<div class="container">
+			<hr />
+			<div id="liens">
+				<a href="le_club.html" th:href="@{/club/}" th:text="#{footer.link.club}">Le Club</a> | <a href="url" th:text="#{footer.link.reviews}">Évaluations</a> | <a href="url" th:text="#{footer.link.refs}">Références</a> | <a href="activities.html" th:href="@{/activity/}" th:text="#{footer.link.activities}">Activités</a> | <a href="url" th:text="#{footer.link.spirits}">Autre spriritueux</a> | <a href="url" th:text="#{footer.link.medias}">Médias</a> | <a href="url" th:text="#{footer.link.contact}">Nous joindre</a> | <a href="url" th:text="#{footer.link.news}">Nouvelles</a>
+				<br />
+				<a href="url" th:text="#{footer.link.registration}">Inscription au club whisky Québec</a> | <a href="url" th:text="#{footer.link.newsletter}">Inscription à l'infolettre</a>
+			</div>
+			<div id="copyright">
+				<span th:text="#{footer.copyright}">&copy;QUEBECWHISKY. Tous droits réservés.</span>
+				<br />
+				<span th:text="#{footer.carambole}">Design graphique :  Carambole [design graphique + conception]</span>
+				<br />
+				<span th:text="#{footer.production}">Réalisation</span> : <a href="mailto:jeanphilippeshields@gmail.com">Jean-Philippe Shields</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+#content p {
+	padding: 20px 20px 0px 30px;
+	background-color: rgba(0,0,0,0.8);
+}
+
+#content p:first-of-type {
+	margin-top: 30px;
+}
+
+#content p:last-of-type {
+	padding-bottom: 20px;
+}

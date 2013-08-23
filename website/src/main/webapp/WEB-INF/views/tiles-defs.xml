@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+    "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+ 
+<tiles-definitions>
+ 
+ 	<definition name="standardLayout" template="/layout" templateType="thymeleaf"/>
+ 
+    <definition name="activities" extends="standardLayout">
+        <put-attribute name="content" value="/activities::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/activities::css" type="thymeleaf"/>
+    </definition>
+ 
+    <definition name="le_club" extends="standardLayout">
+        <put-attribute name="content" value="/le_club::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/le_club::css" type="thymeleaf"/>
+    </definition>
+ 
+    <definition name="reviews" extends="standardLayout">
+        <put-attribute name="content" value="/reviews::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/reviews::css" type="thymeleaf"/>
+    </definition>
+    
+    <definition name="search" extends="standardLayout">
+        <put-attribute name="content" value="/search::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/search::css" type="thymeleaf"/>
+    </definition>
+
+    <definition name="welcome" extends="standardLayout">
+        <put-attribute name="content" value="/welcome::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/welcome::css" type="thymeleaf"/>
+    </definition>
+
+    <definition name="admin" extends="standardLayout">
+        <put-attribute name="content" value="/admin::content" type="thymeleaf"/>
+        <put-attribute name="css" value="/admin::css" type="thymeleaf"/>
+    </definition>
+                    
+</tiles-definitions>

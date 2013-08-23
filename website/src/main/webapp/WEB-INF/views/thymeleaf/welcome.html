@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../resources/css/base.css" th:href="@{/resources/css/base.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" th:href="@{/resources/css/header.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/menu.css" th:href="@{/resources/css/menu.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/body.css" th:href="@{/resources/css/body.css}" />
+<link tiles:fragment="css" rel="stylesheet" type="text/css" href="../../../resources/css/welcome.css" th:href="@{/resources/css/welcome.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/footer.css" th:href="@{/resources/css/footer.css}" />
+</head>
+<body>
+	<div id="main" tiles:fragment="content">
+		<div id="mainbackground">
+			<div class="container">
+				<div id="content">
+					<div id="evaluations">
+						<a class="all_evals" href="" th:text="#{welcome.evaluations.link_all_evals}">toutes les évaluations</a>
+						<div class="title" th:text="#{welcome.evaluations.title}">évaluations</div>
+					</div>
+					<div id="next_activity">
+						<div class="title" th:text="#{welcome.activity.title}">à venir</div>
+						<div th:object="${activity}" th:if="${activity}">
+							<span class="date" th:text="*{#dates.format(date,'dd MMMM yyyy')}">16 janvier 2011</span><br/>
+							<span class="categorie" th:text="*{category}">Dégustation par dizaine</span><br/>
+							<a href="" th:text="#{activities.registration}">Inscription</a>
+						</div>
+					</div>
+					<div id="news">
+						<div class="title" th:text="#{welcome.news.title}">nouvelles</div>
+						<div id="article" th:each="article : ${news}" >
+							<span class="date" th:text="${#dates.format(article.created,'dd MMMM yyyy')}">16 janvier 2011</span><br/>
+							<span class="title" th:text="${article.title}">Id feugiat purus</span><br/>
+							<a href="" th:text="${#strings.abbreviate(article.description, 100)}">Fusce nec lectus metus, id feugiat purus. In tempor consequat massa, eu tristique orci mollis ut. Nullam nec magna arcu. Nulla vel tellus sapien. In ac neque ultricies elit scelerisque cursus. Fusce id eros in urna congue ultrices.</a>
+						</div>
+						<div id="article" th:remove="all">
+							<span class="date">17 janvier 2011</span><br/>
+							<span class="title">Id feugiat purus</span><br/>
+							<a href="">Fusce nec lectus metus, id feugiat purus. In tempor consequat massa, eu tristique orci mollis ut. Nullam nec magna arcu. Nulla vel tellus sapien. In ac neque ultricies elit scelerisque cursus. Fusce id eros in urna congue ultrices.</a>
+						</div>
+						<div id="article" th:remove="all">
+							<span class="date">18 janvier 2011</span><br/>
+							<span class="title">Id feugiat purus</span><br/>
+							<a href="">Fusce nec lectus metus, id feugiat purus. In tempor consequat massa, eu tristique orci mollis ut. Nullam nec magna arcu. Nulla vel tellus sapien. In ac neque ultricies elit scelerisque cursus. Fusce id eros in urna congue ultrices.</a>
+						</div>
+						<div id="article" th:remove="all">
+							<span class="date">19 janvier 2011</span><br/>
+							<span class="title">Id feugiat purus</span><br/>
+							<a href="">Fusce nec lectus metus, id feugiat purus. In tempor consequat massa, eu tristique orci mollis ut. Nullam nec magna arcu. Nulla vel tellus sapien. In ac neque ultricies elit scelerisque cursus. Fusce id eros in urna congue ultrices.</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

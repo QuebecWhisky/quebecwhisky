@@ -1,0 +1,45 @@
+/*
+	RGB: 0,0,0 			-> HEX: 000000
+	RGB: 35,31,32 		-> HEX: 231F20
+	RGB: 45,45,45 		-> HEX: 2D2D2D
+	RGB: 75,75,75 		-> HEX: 4B4B4B
+	RGB: 78,74,75 		-> HEX: 4E4A4B
+	RGB: 103,66,66		-> HEX: 674242
+	RGB: 140,140,140	-> HEX: 8C8C8C
+	RGB: 179,165,146	-> HEX: B3A592
+	RGB: 172,172,172	-> HEX: ACACAC
+	RGB: 195,195,195	-> HEX: C3C3C3
+	RGB: 245,245,245	-> HEX: F5F5F5
+	RGB: 255,255,255	-> HEX: FFFFFF
+*/
+
+/* General */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+}
+
+body {
+	margin: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/* limits the content */
+.container {
+	width: 920px;
+	margin: 0px auto;
+}

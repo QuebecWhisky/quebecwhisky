@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+<link rel="stylesheet" type="text/css" href="../../../resources/css/base.css" th:href="@{/resources/css/base.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/header.css" th:href="@{/resources/css/header.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/menu.css" th:href="@{/resources/css/menu.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/body.css" th:href="@{/resources/css/body.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/footer.css" th:href="@{/resources/css/footer.css}" />
+</head>
+<body>
+	<div id="main" tiles:fragment="content">
+		<div id="mainbackground">
+			<div class="container">
+				<div id="content">
+					<span class="titre">Résultats de la recherche</span>
+					<p th:text="${searchResults.keywords}">Results keywords</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

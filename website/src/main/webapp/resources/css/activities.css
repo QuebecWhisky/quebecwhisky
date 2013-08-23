@@ -1,0 +1,58 @@
+#content a {
+	color: #FFFFFF;
+	padding-right: 15px;
+	background: url(../images/body/white_arrow.png) no-repeat 100% 50%;
+}
+
+#content table:first-of-type {
+	margin-top: 30px;
+}
+
+#content table{
+	margin: 1px 0px;
+	padding: 5px 10px 20px 10px;
+	border-collapse: collapse;
+}
+
+#content table:nth-child(even) {
+	background-color: rgba(0,0,0,0.8);
+}
+
+#content table:nth-child(odd) {
+	background-color: rgba(0,0,0,0.6);
+}
+
+#content table tr td{
+	width: 50%;
+	vertical-align: top;
+}
+
+#content table tr:first-of-type td {
+	padding-top: 15px;
+}
+
+#content table tr:last-of-type td {
+	padding-bottom: 20px;
+}
+
+#content table tr td:nth-child(odd) {
+	padding-left: 30px;
+}
+
+#content table tr td:nth-child(even) {
+	padding-right: 20px;
+}
+
+.date {
+	color: #F9A11C; /*E08E10*/
+}
+
+.categorie {
+	font: bold 1.0em candara, sans-serif;
+}
+
+.act_titre {
+	color: #F9A11C; /*E08E10*/
+	font: bold 1em candara, sans-serif;
+	text-transform: uppercase;
+}
