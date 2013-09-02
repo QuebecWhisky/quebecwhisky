@@ -5,9 +5,9 @@ package com.quebecwhisky.service.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quebecwhisky.dao.INewsDAO;
@@ -22,7 +22,7 @@ import com.quebecwhisky.service.INewsService;
 @Transactional(readOnly = true)
 public class NewsServiceImpl implements INewsService {
 
-	@Autowired
+	@Inject
 	private INewsDAO _newsDao;
 
 	@Override

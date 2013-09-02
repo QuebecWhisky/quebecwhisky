@@ -41,21 +41,21 @@ public abstract class AbstractHibernateDAO<T extends Serializable> implements
 		return getEntityManager().createQuery(criteria).getResultList();
 	}
 
-	public void save(final T entity) {
+	public void persist(final T entity) {
 		getEntityManager().persist(entity);
 	}
 
-	public void update(final T entity) {
+	public void merge(final T entity) {
 		getEntityManager().merge(entity);
 	}
 
-	public void delete(final T entity) {
+	public void remove(final T entity) {
 		getEntityManager().remove(entity);
 	}
 
-	public void deleteById(final Long entityId) {
+	public void removeById(final Long entityId) {
 		final T entity = findOne(entityId);
-		delete(entity);
+		remove(entity);
 	}
 
 	protected final CriteriaBuilder criteriaBuilder() {

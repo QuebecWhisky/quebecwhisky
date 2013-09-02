@@ -15,11 +15,29 @@
 		<div id="mainbackground">
 			<div class="container">
 				<div id="content">
-
+					<div id="distillery-form">
+						<span class="titre" th:text="#{admin.form.distillery.title}">Distillerie</span>
+						<form action="#" th:action="@{/admin/distillery/}" th:object="${distillery}" method="POST">
+							<label for="name" th:text="#{admin.form.distillery.name.label}">Nom: <span class="required">*</span></label>  
+							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
+							<label for="yearEstablished" th:text="#{admin.form.distillery.yearEstablished.label}">Année de création: </label>  
+							<input type="number" id="yearEstablished" name="yearEstablished" value="" th:field="*{yearEstablished}"/>
+							<label for="country" th:text="#{admin.form.distillery.country.label}">Pays: </label>  
+							<input type="text" id="country" name="country" value="" th:field="*{country}"/>
+							<label for="region" th:text="#{admin.form.distillery.region.label}">Région: </label>  
+							<input type="text" id="region" name="region" value="" th:field="*{region}"/>
+							<label for="logo" th:text="#{admin.form.distillery.logo.label}">Logo: </label>  
+							<input type="text" id="logo" name="logo" value="" th:field="*{logo}"/>
+							<label for="hyperlink" th:text="#{admin.form.distillery.hyperlink.label}">Site web:</label>  
+							<input type="text" id="hyperlink" name="hyperlink" value="" th:field="*{hyperlink}"/>
+							<label for="history" th:text="#{admin.form.distillery.history.label}">Présentation: </label>  
+							<textarea id="history" name="history" th:field="*{history}"></textarea>
+							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.distillery.submit.value}"/>					
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
 </html>
-

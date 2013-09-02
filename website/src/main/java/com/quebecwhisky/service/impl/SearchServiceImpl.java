@@ -3,9 +3,9 @@
  */
 package com.quebecwhisky.service.impl;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quebecwhisky.service.IBottleService;
@@ -21,13 +21,13 @@ import com.quebecwhisky.service.ISearchService;
 @Transactional(readOnly = true)
 public class SearchServiceImpl implements ISearchService {
 
-	@Autowired
+	@Inject
 	private IDistilleryService _distillerySrv;
 
-	@Autowired
+	@Inject
 	private IBottleService _bottleSrv;
 
-	@Autowired
+	@Inject
 	private IReviewService _reviewSrv;
 
 }

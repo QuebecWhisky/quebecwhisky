@@ -20,8 +20,7 @@
 		<property name="maxActive" value="10" />
 	</bean-->
 
-	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 		<property name="driverClass" value="${jpa.db.driverClassName}" />
 		<property name="jdbcUrl" value="${jpa.db.url}" />
 		<property name="username" value="${jpa.db.username}" />

@@ -9,6 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author jpshields
@@ -18,86 +21,89 @@ import javax.persistence.OneToMany;
 public class Distillery extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private Short yearEstablished;
-	private String history;
-	private String country;
-	private String region;
-	private String logo;
-	private String hyperlink;
-	private Set<Bottle> bottles;
 
-	@Column
+	private String _name;
+	private Short _yearEstablished;
+	private String _history;
+	private String _country;
+	private String _region;
+	private String _logo;
+	private String _hyperlink;
+	private Set<Bottle> _bottles;
+
+	@Column(unique = true, nullable = false)
+	@NotNull
 	public String getName() {
-		return name;
+		return _name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this._name = name;
 	}
 
 	@Column(name = "established")
+	@Digits(integer = 4, fraction = 0)
+	@Min(0)
 	public Short getYearEstablished() {
-		return yearEstablished;
+		return _yearEstablished;
 	}
 
 	public void setYearEstablished(Short year) {
-		this.yearEstablished = year;
+		this._yearEstablished = year;
 	}
 
 	@Column
 	public String getHistory() {
-		return history;
+		return _history;
 	}
 
 	public void setHistory(String history) {
-		this.history = history;
+		this._history = history;
 	}
 
 	@Column
 	public String getCountry() {
-		return country;
+		return _country;
 	}
 
 	public void setCountry(String country) {
-		this.country = country;
+		this._country = country;
 	}
 
 	@Column
 	public String getRegion() {
-		return region;
+		return _region;
 	}
 
 	public void setRegion(String region) {
-		this.region = region;
+		this._region = region;
 	}
 
 	@Column
 	public String getLogo() {
-		return logo;
+		return _logo;
 	}
 
 	public void setLogo(String logo) {
-		this.logo = logo;
+		this._logo = logo;
 	}
 
 	@Column
 	public String getHyperlink() {
-		return hyperlink;
+		return _hyperlink;
 	}
 
 	public void setHyperlink(String hyperlink) {
-		this.hyperlink = hyperlink;
+		this._hyperlink = hyperlink;
 	}
 
 	@OneToMany(mappedBy = "distillery", fetch = FetchType.LAZY)
 	public Set<Bottle> getBottles() {
-		return bottles;
+		return _bottles;
 	}
 
 	public void setBottles(Set<Bottle> bottles) {
-		this.bottles = bottles;
+		this._bottles = bottles;
 	}
 
 }

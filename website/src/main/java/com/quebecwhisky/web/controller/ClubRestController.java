@@ -17,7 +17,7 @@ import com.quebecwhisky.web.form.Search;
  * 
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/club")
 public class ClubRestController {
 
 	@ModelAttribute("search")
@@ -27,7 +27,7 @@ public class ClubRestController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String show(Map<String, Object> model) {
-		return "admin";
+		return "le_club";
 	}
 
 }

@@ -1,12 +1,63 @@
-#content p {
-	padding: 20px 20px 0px 30px;
-	background-color: rgba(0,0,0,0.8);
+#distillery-form span.titre {
+	padding: 0px;
 }
 
-#content p:first-of-type {
-	margin-top: 30px;
+form .required {
+	font-weight: bold;
+	color: #F00;
 }
 
-#content p:last-of-type {
-	padding-bottom: 20px;
+#distillery-form {
+	background-color: rgba(0,0,0,0.7);
+	width: 465px;
+	height: 665px;
+	padding: 20px;
+	margin: auto;
+	position: relative;
+}
+
+#distillery-form input,
+#distillery-form select,
+#distillery-form textarea,
+#distillery-form label {
+	margin-bottom: 2px;
+}
+
+#distillery-form input,
+#distillery-form select,
+#distillery-form textarea {
+	width: 450px;
+	border: 1px solid #CEE1E8;
+	margin-bottom: 20px;
+	padding: 4px;
+}
+
+#distillery-form textarea {
+	height: 150px;
+	margin-bottom: 20px;
+	resize: none;
+}
+
+#distillery-form label {
+	display: block;
+}
+
+#distillery-form #submit-button {
+	width: 100px;
+	background-color: rgba(161,73,9,0.7);
+	color: #FFF;
+	border: none;
+	display: block;
+	float: right;
+	margin-bottom: 20px;
+	margin-right: 6px;
+}
+
+#distillery-form #submit-button:hover {
+	background-color: #F9A11C;
+}
+
+#distillery-form #submit-button:active {
+	position: relative;
+	top: 1px;
 }

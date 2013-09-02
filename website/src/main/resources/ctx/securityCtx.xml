@@ -20,6 +20,7 @@
 		<authentication-provider>
 			<user-service>
 				<user name="david.pare" password="bruichladdich" authorities="ROLE_ADMIN" />
+				<user name="elisabeth.lessard" password="glenfiddich" authorities="ROLE_ADMIN" />
 				<user name="jeanphilippe.shields" password="admin" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>

@@ -25,7 +25,7 @@
 				</div>
 				<form id="site_search" action="#" th:action="@{/search/}" th:object="${search}" method="POST">
 					<input id="site_search_submit" type="submit" value="" />
-					<input id="site_keywords" type="search" required="true" th:field="*{keywords}" th:placeholder="#{search.tooltip}" placeholder="Recherche dans le site" />
+					<input id="site_keywords" type="search" required="required" th:field="*{keywords}" th:placeholder="#{search.tooltip}" placeholder="Recherche dans le site" />
 				</form>
 				<div id="sommaire">
 					<ul>

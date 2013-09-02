@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author jpshields
@@ -19,7 +20,7 @@ import javax.persistence.OneToMany;
 public class Bottle extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String _name;
 	private Distillery _distillery;
 	private String _type;
@@ -33,7 +34,8 @@ public class Bottle extends AbstractEntity {
 	private Double _priceStore;
 	private Set<Review> _reviews;
 
-	@Column
+	@Column(nullable = false)
+	@NotNull
 	public String getName() {
 		return _name;
 	}
@@ -51,7 +53,7 @@ public class Bottle extends AbstractEntity {
 		this._distillery = distillery;
 	}
 
-	//todo devrait être un enum
+	// todo devrait être un enum
 	@Column(name = "BOTTLE_TYPE")
 	public String getType() {
 		return _type;

@@ -1,79 +1,103 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+/*
+SQLyog Community v11.12 Beta1 (64 bit)
+MySQL - 5.0.41-community-nt : Database - quebecwhisky
+*********************************************************************
+*/
 
-DROP SCHEMA IF EXISTS `quebecwhisky` ;
-CREATE SCHEMA IF NOT EXISTS `quebecwhisky` DEFAULT CHARACTER SET utf8 ;
-USE `quebecwhisky` ;
+/*!40101 SET NAMES utf8 */;
 
--- -----------------------------------------------------
--- Table `quebecwhisky`.`Distillery`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `quebecwhisky`.`Distillery` ;
+/*!40101 SET SQL_MODE=''*/;
 
-CREATE  TABLE IF NOT EXISTS `quebecwhisky`.`Distillery` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT ,
-  `country` VARCHAR(255) NULL DEFAULT NULL ,
-  `history` VARCHAR(255) NULL DEFAULT NULL ,
-  `hyperlink` VARCHAR(255) NULL DEFAULT NULL ,
-  `logo` VARCHAR(255) NULL DEFAULT NULL ,
-  `name` VARCHAR(255) NULL DEFAULT NULL ,
-  `region` VARCHAR(255) NULL DEFAULT NULL ,
-  `established` SMALLINT(6) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`quebecwhisky` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+USE `quebecwhisky`;
 
--- -----------------------------------------------------
--- Table `quebecwhisky`.`Bottle`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `quebecwhisky`.`Bottle` ;
+/*Table structure for table `activity` */
 
-CREATE  TABLE IF NOT EXISTS `quebecwhisky`.`Bottle` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT ,
-  `abv` SMALLINT(6) NULL DEFAULT NULL ,
-  `age` SMALLINT(6) NULL DEFAULT NULL ,
-  `bottler` VARCHAR(255) NULL DEFAULT NULL ,
-  `finish` VARCHAR(255) NULL DEFAULT NULL ,
-  `history` VARCHAR(255) NULL DEFAULT NULL ,
-  `logo` VARCHAR(255) NULL DEFAULT NULL ,
-  `name` VARCHAR(255) NULL DEFAULT NULL ,
-  `priceStore` DOUBLE NULL DEFAULT NULL ,
-  `subtype` VARCHAR(255) NULL DEFAULT NULL ,
-  `BOTTLE_TYPE` VARCHAR(255) NULL DEFAULT NULL ,
-  `distillery_id` BIGINT(20) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `FK76F285E6AFAFDC32` (`distillery_id` ASC) ,
-  CONSTRAINT `FK76F285E6AFAFDC32`
-    FOREIGN KEY (`distillery_id` )
-    REFERENCES `quebecwhisky`.`Distillery` (`id` ))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DROP TABLE IF EXISTS `activity`;
 
+CREATE TABLE `activity` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `category` varchar(255) default NULL,
+  `date` datetime default NULL,
+  `description` varchar(255) default NULL,
+  `registrationUrl` varchar(255) default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `quebecwhisky`.`Review`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `quebecwhisky`.`Review` ;
+/*Table structure for table `bottle` */
 
-CREATE  TABLE IF NOT EXISTS `quebecwhisky`.`Review` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT ,
-  `author` VARCHAR(255) NULL DEFAULT NULL ,
-  `created` DATETIME NULL DEFAULT NULL ,
-  `notes` VARCHAR(255) NULL DEFAULT NULL ,
-  `rating` DOUBLE NULL DEFAULT NULL ,
-  `bottle_id` BIGINT(20) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `FK91B3E3786F7C1B12` (`bottle_id` ASC) ,
-  CONSTRAINT `FK91B3E3786F7C1B12`
-    FOREIGN KEY (`bottle_id` )
-    REFERENCES `quebecwhisky`.`Bottle` (`id` ))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DROP TABLE IF EXISTS `bottle`;
 
+CREATE TABLE `bottle` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `abv` smallint(6) default NULL,
+  `age` smallint(6) default NULL,
+  `bottler` varchar(255) default NULL,
+  `finish` varchar(255) default NULL,
+  `history` varchar(255) default NULL,
+  `logo` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `priceStore` double default NULL,
+  `subtype` varchar(255) default NULL,
+  `BOTTLE_TYPE` varchar(255) default NULL,
+  `distillery_id` bigint(20) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `FK76F285E6AFAFDC32` (`distillery_id`),
+  CONSTRAINT `FK76F285E6AFAFDC32` FOREIGN KEY (`distillery_id`) REFERENCES `distillery` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `distillery` */
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+DROP TABLE IF EXISTS `distillery`;
+
+CREATE TABLE `distillery` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `country` varchar(255) default NULL,
+  `history` varchar(255) default NULL,
+  `hyperlink` varchar(255) default NULL,
+  `logo` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `region` varchar(255) default NULL,
+  `established` smallint(6) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `news` */
+
+DROP TABLE IF EXISTS `news`;
+
+CREATE TABLE `news` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `author` varchar(255) default NULL,
+  `created` datetime default NULL,
+  `description` varchar(255) default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `review` */
+
+DROP TABLE IF EXISTS `review`;
+
+CREATE TABLE `review` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `author` varchar(255) default NULL,
+  `created` datetime default NULL,
+  `notes` varchar(255) default NULL,
+  `rating` double default NULL,
+  `bottle_id` bigint(20) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `FK91B3E3786F7C1B12` (`bottle_id`),
+  CONSTRAINT `FK91B3E3786F7C1B12` FOREIGN KEY (`bottle_id`) REFERENCES `bottle` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
