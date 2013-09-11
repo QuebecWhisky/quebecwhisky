@@ -3,6 +3,8 @@
  */
 package com.quebecwhisky.service;
 
+import java.util.List;
+
 import com.quebecwhisky.model.Distillery;
 
 /**
@@ -11,6 +13,10 @@ import com.quebecwhisky.model.Distillery;
  */
 public interface IDistilleryService {
 
-	void persist(Distillery distillery); 
+	Distillery findById(Long id);
 	
+	List<Distillery> getDistilleries();
+
+	void persist(Distillery distillery);
+
 }

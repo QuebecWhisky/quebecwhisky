@@ -3,6 +3,8 @@
  */
 package com.quebecwhisky.web.controller;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.quebecwhisky.model.Bottle;
 import com.quebecwhisky.model.Distillery;
 import com.quebecwhisky.model.Review;
+import com.quebecwhisky.service.IBottleService;
 import com.quebecwhisky.service.IDistilleryService;
 import com.quebecwhisky.web.form.Search;
 
@@ -31,6 +34,9 @@ public class AdminRestController {
 
 	@Inject
 	private IDistilleryService _distillerySrv;
+
+	@Inject
+	private IBottleService _bottleSrv;
 
 	@ModelAttribute("search")
 	public Search getSearchForm() {
@@ -54,12 +60,21 @@ public class AdminRestController {
 
 	@RequestMapping
 	public String show(Map<String, Object> model) {
+
+		List<Distillery> distilleries = _distillerySrv.getDistilleries();
+		model.put("distilleries", distilleries);
+		List<Bottle> bottles = _bottleSrv.getBottles();
+		model.put("bottles", bottles);
+
 		return "admin";
 	}
 
 	@RequestMapping(value = "/distillery", method = RequestMethod.POST)
-	public String addDistillery(@Valid @ModelAttribute Distillery distillery,
-			RedirectAttributes redirectAttributes, BindingResult errors) {
+	public String addDistillery(
+			@Valid @ModelAttribute Distillery distillery,
+			BindingResult errors,
+			@ModelAttribute("distilleries") LinkedList<Distillery> distilleries,
+			Map<String, Object> model, RedirectAttributes redirectAttributes) {
 
 		if (errors.hasErrors()) {
 			// posted foo instance is not valid and should be resubmitted
@@ -69,7 +84,26 @@ public class AdminRestController {
 
 		_distillerySrv.persist(distillery);
 
+		distilleries.add(distillery);
+		// model.put("distilleries", distilleries);
+
 		redirectAttributes.addFlashAttribute("distillery", new Distillery());
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/bottle", method = RequestMethod.POST)
+	public String addBottle(@Valid @ModelAttribute Bottle bottle,
+			BindingResult errors, RedirectAttributes redirectAttributes) {
+
+		if (errors.hasErrors()) {
+			// posted foo instance is not valid and should be resubmitted
+		} else {
+			// posted foo instance is valid and can be processed
+		}
+
+		_bottleSrv.persist(bottle);
+
+		redirectAttributes.addFlashAttribute("bottle", new Bottle());
 		return "redirect:/admin";
 	}
 

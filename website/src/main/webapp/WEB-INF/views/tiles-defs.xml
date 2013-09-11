@@ -10,31 +10,37 @@
     <definition name="activities" extends="standardLayout">
         <put-attribute name="content" value="/activities::content" type="thymeleaf"/>
         <put-attribute name="css" value="/activities::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/activities::scripts" type="thymeleaf"/>
     </definition>
  
     <definition name="le_club" extends="standardLayout">
         <put-attribute name="content" value="/le_club::content" type="thymeleaf"/>
         <put-attribute name="css" value="/le_club::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/le_club::scripts" type="thymeleaf"/>
     </definition>
  
     <definition name="reviews" extends="standardLayout">
         <put-attribute name="content" value="/reviews::content" type="thymeleaf"/>
         <put-attribute name="css" value="/reviews::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/reviews::scripts" type="thymeleaf"/>
     </definition>
     
     <definition name="search" extends="standardLayout">
         <put-attribute name="content" value="/search::content" type="thymeleaf"/>
         <put-attribute name="css" value="/search::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/search::scripts" type="thymeleaf"/>
     </definition>
 
     <definition name="welcome" extends="standardLayout">
         <put-attribute name="content" value="/welcome::content" type="thymeleaf"/>
         <put-attribute name="css" value="/welcome::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/welcome::scripts" type="thymeleaf"/>
     </definition>
 
     <definition name="admin" extends="standardLayout">
         <put-attribute name="content" value="/admin::content" type="thymeleaf"/>
         <put-attribute name="css" value="/admin::css" type="thymeleaf"/>
+        <put-attribute name="scripts" value="/admin::scripts" type="thymeleaf"/>
     </definition>
                     
 </tiles-definitions>

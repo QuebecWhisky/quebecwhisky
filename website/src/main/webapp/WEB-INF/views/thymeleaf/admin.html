@@ -15,29 +15,70 @@
 		<div id="mainbackground">
 			<div class="container">
 				<div id="content">
-					<div id="distillery-form">
+					<ul id="onglets">
+						<li th:text="#{admin.form.distillery.title}">Distillerie</li>
+						<li th:text="#{admin.form.bottle.title}">Bouteille</li>
+					</ul>
+					<div id="distillery-form" class="form">
 						<span class="titre" th:text="#{admin.form.distillery.title}">Distillerie</span>
 						<form action="#" th:action="@{/admin/distillery/}" th:object="${distillery}" method="POST">
-							<label for="name" th:text="#{admin.form.distillery.name.label}">Nom: <span class="required">*</span></label>  
+							<label for="name" th:text="#{admin.form.name.label}">Nom:</label><span class="required">*</span>
 							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
-							<label for="yearEstablished" th:text="#{admin.form.distillery.yearEstablished.label}">Année de création: </label>  
-							<input type="number" id="yearEstablished" name="yearEstablished" value="" th:field="*{yearEstablished}"/>
-							<label for="country" th:text="#{admin.form.distillery.country.label}">Pays: </label>  
+							<label for="yearEstablished" th:text="#{admin.form.distillery.yearEstablished.label}">Année de création:</label>
+							<input type="number" id="yearEstablished" name="yearEstablished" value="" th:field="*{yearEstablished}" min="0"/>
+							<label for="country" th:text="#{admin.form.distillery.country.label}">Pays:</label>
 							<input type="text" id="country" name="country" value="" th:field="*{country}"/>
-							<label for="region" th:text="#{admin.form.distillery.region.label}">Région: </label>  
+							<label for="region" th:text="#{admin.form.distillery.region.label}">Région:</label>
 							<input type="text" id="region" name="region" value="" th:field="*{region}"/>
-							<label for="logo" th:text="#{admin.form.distillery.logo.label}">Logo: </label>  
+							<label for="logo" th:text="#{admin.form.logo.label}">Logo:</label>
 							<input type="text" id="logo" name="logo" value="" th:field="*{logo}"/>
-							<label for="hyperlink" th:text="#{admin.form.distillery.hyperlink.label}">Site web:</label>  
+							<label for="hyperlink" th:text="#{admin.form.distillery.hyperlink.label}">Site web:</label>
 							<input type="text" id="hyperlink" name="hyperlink" value="" th:field="*{hyperlink}"/>
-							<label for="history" th:text="#{admin.form.distillery.history.label}">Présentation: </label>  
+							<label for="history" th:text="#{admin.form.history.label}">Présentation:</label>
 							<textarea id="history" name="history" th:field="*{history}"></textarea>
-							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.distillery.submit.value}"/>					
+							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
 						</form>
 					</div>
+					<div id="bottle-form" class="form">
+						<span class="titre" th:text="#{admin.form.bottle.title}">Bouteille</span>
+						<form action="#" th:action="@{/admin/bottle/}" th:object="${bottle}" method="POST">
+							<label for="name" th:text="#{admin.form.name.label}">Nom:</label><span class="required">*</span>
+							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
+							<label for="distillery" th:text="#{admin.form.bottle.distillery.label}">Distillerie:</label>
+							<select id="distillery" th:field="*{distillery}">
+				                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
+				                <option th:each="dist : ${distilleries}" th:value="${dist.id}" th:text="${dist.name}" />
+				            </select>
+							<label for="type" th:text="#{admin.form.bottle.type.label}">Type:</label>
+							<input type="text" id="type" name="type" value="" th:field="*{type}"/>
+							<label for="subtype" th:text="#{admin.form.bottle.subtype.label}">Sous type: </label>
+							<input type="text" id="subtype" name="subtype" value="" th:field="*{subtype}"/>
+							<label for="bottler" th:text="#{admin.form.bottle.bottler.label}">Embouteilleur:</label>
+							<input type="text" id="bottler" name="bottler" value="" th:field="*{bottler}"/>
+							<label for="age" th:text="#{admin.form.bottle.age.label}">Âge:</label>
+							<input type="number" id="age" name="age" value="" th:field="*{age}" min="0"/>
+							<label for="abv" th:text="#{admin.form.bottle.abv.label}">Abv:</label>
+							<input type="number" id="abv" name="abv" value="" th:field="*{abv}" min="0"/>
+							<label for="finish" th:text="#{admin.form.bottle.finish.label}">Finish:</label>
+							<input type="text" id="finish" name="finish" value="" th:field="*{finish}"/>
+							<label for="priceStore" th:text="#{admin.form.bottle.priceStore.label}">Prix:</label>
+							<input type="number" id="priceStore" name="priceStore" value="" th:field="*{priceStore}" min="0" pattern="^\d+(\.|\,)\d{2}$" step="0.25"/>
+							<label for="logo" th:text="#{admin.form.logo.label}">Logo: </label>
+							<input type="text" id="logo" name="logo" value="" th:field="*{logo}"/>
+							<label for="history" th:text="#{admin.form.history.label}">Présentation: </label>
+							<textarea id="history" name="history" th:field="*{history}"></textarea>
+							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
+						</form>
+					</div>					
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js" th:remove="all"></script>
+	<script tiles:fragment="scripts">
+		$("li").click(function () {
+	      $(this).toggleClass("test");
+	    });
+	</script>
 </body>
 </html>

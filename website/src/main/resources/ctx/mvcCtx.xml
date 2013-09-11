@@ -10,9 +10,17 @@
 	<import resource="classpath:ctx/appCtx.xml" />
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
-	<mvc:annotation-driven />
+	<mvc:annotation-driven conversion-service="conversionService"/>
 
-	<!-- i18n -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+      	<property name="formatters">
+            <set>
+                <bean class="com.quebecwhisky.web.formatter.DistilleryFormatter"/>
+                <bean class="com.quebecwhisky.web.formatter.BottleFormatter"/>
+            </set>
+        </property>
+	</bean>
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:i18n/messages" />

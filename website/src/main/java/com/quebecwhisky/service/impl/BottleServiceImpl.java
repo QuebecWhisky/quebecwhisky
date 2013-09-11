@@ -25,8 +25,20 @@ public class BottleServiceImpl implements IBottleService {
 	@Inject
 	private IBottleDAO _bottleDao;
 
+	@Override
+	public Bottle findById(Long id) {
+		return _bottleDao.findOne(id);
+	}
+
+	@Override
 	public List<Bottle> getBottles() {
 		return _bottleDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public void persist(Bottle bottle) {
+		_bottleDao.persist(bottle);
 	}
 
 }

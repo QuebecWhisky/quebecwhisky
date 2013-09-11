@@ -3,6 +3,8 @@
  */
 package com.quebecwhisky.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,6 +25,16 @@ public class DistilleryServiceImpl implements IDistilleryService {
 	@Inject
 	private IDistilleryDAO _distilleryDao;
 
+	@Override
+	public Distillery findById(Long id) {
+		return _distilleryDao.findOne(id);
+	}
+	
+	@Override
+	public List<Distillery> getDistilleries() {
+		return _distilleryDao.findAll();
+	}
+	
 	@Override
 	@Transactional(readOnly = false)
 	public void persist(Distillery distillery) {

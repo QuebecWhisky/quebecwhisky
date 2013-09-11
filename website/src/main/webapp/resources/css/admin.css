@@ -1,5 +1,24 @@
-#distillery-form span.titre {
-	padding: 0px;
+#onglets {
+	background-color: rgba(0,0,0,0.7);
+	width: 465px;
+	padding: 20px;
+	margin: auto;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+#onglets li {
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.test {
+	background-color: rgba(161,73,9,0.7);
+}
+
+#onglets li:active {
+	position: relative;
+	top: 1px;
 }
 
 form .required {
@@ -7,42 +26,37 @@ form .required {
 	color: #F00;
 }
 
-#distillery-form {
+div .form {
 	background-color: rgba(0,0,0,0.7);
 	width: 465px;
-	height: 665px;
 	padding: 20px;
 	margin: auto;
 	position: relative;
 }
 
-#distillery-form input,
-#distillery-form select,
-#distillery-form textarea,
-#distillery-form label {
+div .form input,
+div .form select,
+div .form textarea,
+div .form label {
 	margin-bottom: 2px;
 }
 
-#distillery-form input,
-#distillery-form select,
-#distillery-form textarea {
+div .form input,
+div .form select,
+div .form textarea {
 	width: 450px;
 	border: 1px solid #CEE1E8;
 	margin-bottom: 20px;
 	padding: 4px;
 }
 
-#distillery-form textarea {
+div .form textarea {
 	height: 150px;
 	margin-bottom: 20px;
 	resize: none;
 }
 
-#distillery-form label {
-	display: block;
-}
-
-#distillery-form #submit-button {
+div .form #submit-button {
 	width: 100px;
 	background-color: rgba(161,73,9,0.7);
 	color: #FFF;
@@ -53,11 +67,26 @@ form .required {
 	margin-right: 6px;
 }
 
-#distillery-form #submit-button:hover {
+div .form #submit-button:hover {
 	background-color: #F9A11C;
 }
 
-#distillery-form #submit-button:active {
+div .form #submit-button:active {
 	position: relative;
 	top: 1px;
+}
+
+#distillery-form span.titre,
+#bottle-form span.titre {
+	padding: 0px;
+}
+
+#distillery-form {
+	height: 655px;
+	margin-bottom: 20px;
+}
+
+#bottle-form {
+	height: 925px;
+	margin-bottom: 20px;
 }

@@ -93,18 +93,18 @@
 	cursor: pointer;
 }
 
-#sommaire  ul {
+#sommaire ul {
 	display: block;
 	list-style-type: none;
 	text-transform: uppercase;
 	text-align: right;
 }
 
-#sommaire  ul li {
+#sommaire ul li {
 	font: bold 0.8em candara, sans-serif;
 }
 
-#sommaire ul  li a {
+#sommaire ul li a {
 	padding-left: 15px;
 	background: url(../images/header/star.png) no-repeat 0% 50%;
 	color: #000000;

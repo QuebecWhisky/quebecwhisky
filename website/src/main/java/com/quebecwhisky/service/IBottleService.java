@@ -9,10 +9,14 @@ import com.quebecwhisky.model.Bottle;
 
 /**
  * @author jpshields
- *
+ * 
  */
 public interface IBottleService {
 
-	List<Bottle> getBottles();
+	Bottle findById(Long id);
 	
+	List<Bottle> getBottles();
+
+	void persist(Bottle bottle);
+
 }
