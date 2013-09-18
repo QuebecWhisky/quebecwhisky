@@ -8,26 +8,35 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author jpshields
  * 
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"AUTHOR","BOTTLE_ID"}))
 public class Review extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Bottle _bottle;
 	private String _author;
 	private Double _rating;
 	private String _notes;
 	private Date _created;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	@JoinColumn(nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	public Bottle getBottle() {
 		return _bottle;
 	}
@@ -36,7 +45,8 @@ public class Review extends AbstractEntity {
 		this._bottle = bottle;
 	}
 
-	@Column
+	@NotNull
+	@Column(nullable = false)
 	public String getAuthor() {
 		return _author;
 	}
@@ -46,6 +56,8 @@ public class Review extends AbstractEntity {
 	}
 
 	@Column
+	@Digits(integer = 3, fraction = 1)
+	@Min(0)
 	public Double getRating() {
 		return _rating;
 	}
@@ -63,7 +75,7 @@ public class Review extends AbstractEntity {
 		this._notes = notes;
 	}
 
-	@Column
+	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreated() {
 		return _created;
@@ -71,6 +83,37 @@ public class Review extends AbstractEntity {
 
 	public void setCreated(Date created) {
 		this._created = created;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((_author == null) ? 0 : _author.hashCode());
+		result = prime * result + ((_bottle == null) ? 0 : _bottle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Review other = (Review) obj;
+		if (_author == null) {
+			if (other._author != null)
+				return false;
+		} else if (!_author.equals(other._author))
+			return false;
+		if (_bottle == null) {
+			if (other._bottle != null)
+				return false;
+		} else if (!_bottle.equals(other._bottle))
+			return false;
+		return true;
 	}
 
 }

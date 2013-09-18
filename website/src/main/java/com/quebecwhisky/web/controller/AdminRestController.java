@@ -3,7 +3,7 @@
  */
 package com.quebecwhisky.web.controller;
 
-import java.util.LinkedList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +22,7 @@ import com.quebecwhisky.model.Distillery;
 import com.quebecwhisky.model.Review;
 import com.quebecwhisky.service.IBottleService;
 import com.quebecwhisky.service.IDistilleryService;
+import com.quebecwhisky.service.IReviewService;
 import com.quebecwhisky.web.form.Search;
 
 /**
@@ -37,6 +38,9 @@ public class AdminRestController {
 
 	@Inject
 	private IBottleService _bottleSrv;
+
+	@Inject
+	private IReviewService _reviewSrv;
 
 	@ModelAttribute("search")
 	public Search getSearchForm() {
@@ -70,11 +74,8 @@ public class AdminRestController {
 	}
 
 	@RequestMapping(value = "/distillery", method = RequestMethod.POST)
-	public String addDistillery(
-			@Valid @ModelAttribute Distillery distillery,
-			BindingResult errors,
-			@ModelAttribute("distilleries") LinkedList<Distillery> distilleries,
-			Map<String, Object> model, RedirectAttributes redirectAttributes) {
+	public String addDistillery(@Valid @ModelAttribute Distillery distillery,
+			BindingResult errors, RedirectAttributes redirectAttributes) {
 
 		if (errors.hasErrors()) {
 			// posted foo instance is not valid and should be resubmitted
@@ -83,9 +84,6 @@ public class AdminRestController {
 		}
 
 		_distillerySrv.persist(distillery);
-
-		distilleries.add(distillery);
-		// model.put("distilleries", distilleries);
 
 		redirectAttributes.addFlashAttribute("distillery", new Distillery());
 		return "redirect:/admin";
@@ -104,6 +102,23 @@ public class AdminRestController {
 		_bottleSrv.persist(bottle);
 
 		redirectAttributes.addFlashAttribute("bottle", new Bottle());
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/review", method = RequestMethod.POST)
+	public String addReview(@Valid @ModelAttribute Review review,
+			BindingResult errors, RedirectAttributes redirectAttributes) {
+
+		if (errors.hasErrors()) {
+			// posted foo instance is not valid and should be resubmitted
+		} else {
+			// posted foo instance is valid and can be processed
+		}
+
+		review.setCreated(new Date());
+		_reviewSrv.persist(review);
+
+		redirectAttributes.addFlashAttribute("review", new Review());
 		return "redirect:/admin";
 	}
 

@@ -18,6 +18,7 @@
 					<ul id="onglets">
 						<li th:text="#{admin.form.distillery.title}">Distillerie</li>
 						<li th:text="#{admin.form.bottle.title}">Bouteille</li>
+						<li th:text="#{admin.form.review.title}">Évaluation</li>
 					</ul>
 					<div id="distillery-form" class="form">
 						<span class="titre" th:text="#{admin.form.distillery.title}">Distillerie</span>
@@ -44,7 +45,7 @@
 						<form action="#" th:action="@{/admin/bottle/}" th:object="${bottle}" method="POST">
 							<label for="name" th:text="#{admin.form.name.label}">Nom:</label><span class="required">*</span>
 							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
-							<label for="distillery" th:text="#{admin.form.bottle.distillery.label}">Distillerie:</label>
+							<label for="distillery" th:text="#{admin.form.bottle.distillery.label}">Distillerie:</label><span class="required">*</span>
 							<select id="distillery" th:field="*{distillery}">
 				                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
 				                <option th:each="dist : ${distilleries}" th:value="${dist.id}" th:text="${dist.name}" />
@@ -69,7 +70,24 @@
 							<textarea id="history" name="history" th:field="*{history}"></textarea>
 							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
 						</form>
-					</div>					
+					</div>
+					<div id="review-form" class="form">
+						<span class="titre" th:text="#{admin.form.review.title}">Évaluation</span>
+						<form action="#" th:action="@{/admin/review/}" th:object="${review}" method="POST">
+							<label for="author" th:text="#{admin.form.author.label}">Auteur:</label><span class="required">*</span>
+							<input type="text" id="author" name="author" value="" required="required" th:field="*{author}"/>
+							<label for="bottle" th:text="#{admin.form.review.bottle.label}">Bouteille:</label><span class="required">*</span>
+							<select id="bottle" th:field="*{bottle}">
+				                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
+				                <option th:each="bot : ${bottles}" th:value="${bot.id}" th:text="${bot.name}" />
+				            </select>
+				            <label for="rating" th:text="#{admin.form.review.rating.label}">Note:</label><span class="required">*</span>
+				            <input type="number" id="rating" name="rating" value="" th:field="*{rating}" required="required" min="0" pattern="^\d+(\.|\,)\d{1}$" step="0.1"/>
+				            <label for="notes" th:text="#{admin.form.review.notes.label}">Description: </label>
+							<textarea id="notes" name="notes" th:field="*{notes}"></textarea>
+							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

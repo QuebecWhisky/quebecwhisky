@@ -109,19 +109,8 @@ public class Distillery extends AbstractEntity {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((_country == null) ? 0 : _country.hashCode());
-		result = prime * result
-				+ ((_history == null) ? 0 : _history.hashCode());
-		result = prime * result
-				+ ((_hyperlink == null) ? 0 : _hyperlink.hashCode());
-		result = prime * result + ((_logo == null) ? 0 : _logo.hashCode());
+		int result = 1;
 		result = prime * result + ((_name == null) ? 0 : _name.hashCode());
-		result = prime * result + ((_region == null) ? 0 : _region.hashCode());
-		result = prime
-				* result
-				+ ((_yearEstablished == null) ? 0 : _yearEstablished.hashCode());
 		return result;
 	}
 
@@ -129,45 +118,15 @@ public class Distillery extends AbstractEntity {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Distillery other = (Distillery) obj;
-		if (_country == null) {
-			if (other._country != null)
-				return false;
-		} else if (!_country.equals(other._country))
-			return false;
-		if (_history == null) {
-			if (other._history != null)
-				return false;
-		} else if (!_history.equals(other._history))
-			return false;
-		if (_hyperlink == null) {
-			if (other._hyperlink != null)
-				return false;
-		} else if (!_hyperlink.equals(other._hyperlink))
-			return false;
-		if (_logo == null) {
-			if (other._logo != null)
-				return false;
-		} else if (!_logo.equals(other._logo))
-			return false;
 		if (_name == null) {
 			if (other._name != null)
 				return false;
 		} else if (!_name.equals(other._name))
-			return false;
-		if (_region == null) {
-			if (other._region != null)
-				return false;
-		} else if (!_region.equals(other._region))
-			return false;
-		if (_yearEstablished == null) {
-			if (other._yearEstablished != null)
-				return false;
-		} else if (!_yearEstablished.equals(other._yearEstablished))
 			return false;
 		return true;
 	}

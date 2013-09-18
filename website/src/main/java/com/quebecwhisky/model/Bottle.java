@@ -8,8 +8,11 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -19,6 +22,7 @@ import javax.validation.constraints.NotNull;
  * 
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"NAME","DISTILLERY_ID"}))
 public class Bottle extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -36,8 +40,8 @@ public class Bottle extends AbstractEntity {
 	private Double _priceStore;
 	private Set<Review> _reviews;
 
-	@Column(unique = true, nullable = false)
 	@NotNull
+	@Column(unique = true, nullable = false)
 	public String getName() {
 		return _name;
 	}
@@ -46,7 +50,11 @@ public class Bottle extends AbstractEntity {
 		this._name = name;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	// Comme la distillery est dans le hashCode(), si la dist n'est pas
+	// disponible au rendu de la vue, ça plante. FetchType.EAGER nécessaire ici.
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(nullable = false)
 	public Distillery getDistillery() {
 		return _distillery;
 	}
@@ -152,21 +160,10 @@ public class Bottle extends AbstractEntity {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((_abv == null) ? 0 : _abv.hashCode());
-		result = prime * result + ((_age == null) ? 0 : _age.hashCode());
+		int result = 1;
 		result = prime * result
-				+ ((_bottler == null) ? 0 : _bottler.hashCode());
-		result = prime * result + ((_finish == null) ? 0 : _finish.hashCode());
-		result = prime * result
-				+ ((_history == null) ? 0 : _history.hashCode());
-		result = prime * result + ((_logo == null) ? 0 : _logo.hashCode());
+				+ ((_distillery == null) ? 0 : _distillery.hashCode());
 		result = prime * result + ((_name == null) ? 0 : _name.hashCode());
-		result = prime * result
-				+ ((_priceStore == null) ? 0 : _priceStore.hashCode());
-		result = prime * result
-				+ ((_subtype == null) ? 0 : _subtype.hashCode());
-		result = prime * result + ((_type == null) ? 0 : _type.hashCode());
 		return result;
 	}
 
@@ -174,60 +171,20 @@ public class Bottle extends AbstractEntity {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Bottle other = (Bottle) obj;
-		if (_abv == null) {
-			if (other._abv != null)
+		if (_distillery == null) {
+			if (other._distillery != null)
 				return false;
-		} else if (!_abv.equals(other._abv))
-			return false;
-		if (_age == null) {
-			if (other._age != null)
-				return false;
-		} else if (!_age.equals(other._age))
-			return false;
-		if (_bottler == null) {
-			if (other._bottler != null)
-				return false;
-		} else if (!_bottler.equals(other._bottler))
-			return false;
-		if (_finish == null) {
-			if (other._finish != null)
-				return false;
-		} else if (!_finish.equals(other._finish))
-			return false;
-		if (_history == null) {
-			if (other._history != null)
-				return false;
-		} else if (!_history.equals(other._history))
-			return false;
-		if (_logo == null) {
-			if (other._logo != null)
-				return false;
-		} else if (!_logo.equals(other._logo))
+		} else if (!_distillery.equals(other._distillery))
 			return false;
 		if (_name == null) {
 			if (other._name != null)
 				return false;
 		} else if (!_name.equals(other._name))
-			return false;
-		if (_priceStore == null) {
-			if (other._priceStore != null)
-				return false;
-		} else if (!_priceStore.equals(other._priceStore))
-			return false;
-		if (_subtype == null) {
-			if (other._subtype != null)
-				return false;
-		} else if (!_subtype.equals(other._subtype))
-			return false;
-		if (_type == null) {
-			if (other._type != null)
-				return false;
-		} else if (!_type.equals(other._type))
 			return false;
 		return true;
 	}

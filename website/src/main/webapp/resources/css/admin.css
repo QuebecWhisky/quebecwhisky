@@ -77,7 +77,8 @@ div .form #submit-button:active {
 }
 
 #distillery-form span.titre,
-#bottle-form span.titre {
+#bottle-form span.titre,
+#review-form span.titre {
 	padding: 0px;
 }
 
@@ -88,5 +89,10 @@ div .form #submit-button:active {
 
 #bottle-form {
 	height: 925px;
+	margin-bottom: 20px;
+}
+
+#review-form {
+	height: 460px;
 	margin-bottom: 20px;
 }

@@ -6,12 +6,9 @@ package com.quebecwhisky.web.formatter;
 import java.text.ParseException;
 import java.util.Locale;
 
-import javax.inject.Inject;
-
 import org.springframework.format.Formatter;
 
 import com.quebecwhisky.model.Distillery;
-import com.quebecwhisky.service.IDistilleryService;
 
 /**
  * @author Jean-Philippe
@@ -19,9 +16,9 @@ import com.quebecwhisky.service.IDistilleryService;
  */
 public final class DistilleryFormatter implements Formatter<Distillery> {
 
-	@Inject
-	private IDistilleryService _distillerySrv;
-	
+	// @Inject
+	// private IDistilleryService _distillerySrv;
+
 	@Override
 	public String print(Distillery distillery, Locale locale) {
 		return distillery.getId().toString();
@@ -29,7 +26,10 @@ public final class DistilleryFormatter implements Formatter<Distillery> {
 
 	@Override
 	public Distillery parse(String id, Locale locale) throws ParseException {
-		return _distillerySrv.findById(Long.valueOf(id));
+		// return _distillerySrv.findById(Long.valueOf(id));
+		Distillery distillery = new Distillery();
+		distillery.setId(Long.valueOf(id));
+		return distillery;
 	}
 
 }
