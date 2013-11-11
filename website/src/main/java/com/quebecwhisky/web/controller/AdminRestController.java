@@ -17,11 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.quebecwhisky.model.Activity;
+import com.quebecwhisky.model.ActivityCategoryEnum;
 import com.quebecwhisky.model.Bottle;
 import com.quebecwhisky.model.Distillery;
+import com.quebecwhisky.model.News;
 import com.quebecwhisky.model.Review;
+import com.quebecwhisky.service.IActivityService;
 import com.quebecwhisky.service.IBottleService;
 import com.quebecwhisky.service.IDistilleryService;
+import com.quebecwhisky.service.INewsService;
 import com.quebecwhisky.service.IReviewService;
 import com.quebecwhisky.web.form.Search;
 
@@ -42,6 +47,12 @@ public class AdminRestController {
 	@Inject
 	private IReviewService _reviewSrv;
 
+	@Inject
+	private INewsService _newsSrv;
+
+	@Inject
+	private IActivityService _activitySrv;
+
 	@ModelAttribute("search")
 	public Search getSearchForm() {
 		return new Search();
@@ -60,6 +71,21 @@ public class AdminRestController {
 	@ModelAttribute("distillery")
 	public Distillery getDistilleryForm() {
 		return new Distillery();
+	}
+
+	@ModelAttribute("news")
+	public News getNewsForm() {
+		return new News();
+	}
+
+	@ModelAttribute("activity")
+	public Activity getActivityForm() {
+		return new Activity();
+	}
+	
+	@ModelAttribute("activityCategories")
+	public ActivityCategoryEnum[] getActivityCategories() {
+		return ActivityCategoryEnum.values();
 	}
 
 	@RequestMapping
@@ -119,6 +145,39 @@ public class AdminRestController {
 		_reviewSrv.persist(review);
 
 		redirectAttributes.addFlashAttribute("review", new Review());
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/news", method = RequestMethod.POST)
+	public String addNews(@Valid @ModelAttribute News news,
+			BindingResult errors, RedirectAttributes redirectAttributes) {
+
+		if (errors.hasErrors()) {
+			// posted foo instance is not valid and should be resubmitted
+		} else {
+			// posted foo instance is valid and can be processed
+		}
+
+		news.setCreated(new Date());
+		_newsSrv.persist(news);
+
+		redirectAttributes.addFlashAttribute("news", new News());
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/activity", method = RequestMethod.POST)
+	public String addActivity(@Valid @ModelAttribute Activity activity,
+			BindingResult errors, RedirectAttributes redirectAttributes) {
+
+		if (errors.hasErrors()) {
+			// posted foo instance is not valid and should be resubmitted
+		} else {
+			// posted foo instance is valid and can be processed
+		}
+
+		_activitySrv.persist(activity);
+
+		redirectAttributes.addFlashAttribute("activity", new Activity());
 		return "redirect:/admin";
 	}
 

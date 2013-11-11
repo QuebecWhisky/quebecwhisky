@@ -41,4 +41,10 @@ public class ActivityServiceImpl implements IActivityService {
 		return _activityDao.getNextActivities(from, activitiesNumber);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public void persist(Activity activity) {
+		_activityDao.persist(activity);
+	}
+
 }

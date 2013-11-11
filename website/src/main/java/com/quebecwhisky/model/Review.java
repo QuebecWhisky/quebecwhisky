@@ -55,6 +55,7 @@ public class Review extends AbstractEntity {
 		this._author = author;
 	}
 
+	@NotNull
 	@Column
 	@Digits(integer = 3, fraction = 1)
 	@Min(0)

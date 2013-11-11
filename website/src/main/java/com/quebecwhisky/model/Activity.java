@@ -11,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author jpshields
@@ -27,6 +28,7 @@ public class Activity extends AbstractEntity {
 	private String _registrationUrl;
 	private String _description;
 
+	@NotNull
 	@Column
 	public String getTitle() {
 		return this._title;
@@ -65,6 +67,7 @@ public class Activity extends AbstractEntity {
 		this._registrationUrl = url;
 	}
 
+	@NotNull
 	@Column
 	public String getDescription() {
 		return this._description;

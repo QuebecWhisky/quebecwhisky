@@ -32,4 +32,6 @@ public interface IActivityService {
 	 */
 	List<Activity> getNextActivities(Date from, Integer activitiesNumber);
 
+	void persist(Activity activity);
+	
 }

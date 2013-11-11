@@ -30,4 +30,10 @@ public class NewsServiceImpl implements INewsService {
 		return this._newsDao.getRecentNews(newsNumber);
 	}
 
+	@Override
+	@Transactional(readOnly = false)
+	public void persist(News distillery) {
+		_newsDao.persist(distillery);
+	}
+
 }

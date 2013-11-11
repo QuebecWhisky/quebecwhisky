@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
-   <table name="bottle">
-      <column>name</column>
-      <row>
-         <value>Aberlour</value>
-      </row>
-   </table>
+	<table name="distillery">
+		<column>id</column>
+		<column>name</column>
+		<row>
+			<value>1</value>
+			<value>Aberlour</value>
+		</row>
+	</table>
+
+	<table name="bottle">
+		<column>name</column>
+		<column>distillery_id</column>
+		<row>
+			<value>16 years</value>
+			<value>1</value>
+		</row>
+	</table>
 
 </dataset>

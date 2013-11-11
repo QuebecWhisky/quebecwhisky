@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../../../resources/css/body.css" th:href="@{/resources/css/body.css}" />
 <link tiles:substituteby="css" />
 <link rel="stylesheet" type="text/css" href="../../../resources/css/footer.css" th:href="@{/resources/css/footer.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/jquery/custom-theme/jquery-ui-1.10.3.custom.css" th:href="@{/resources/css/jquery/custom-theme/jquery-ui-1.10.3.custom.css}"/>
 </head>
 <body>
 	<div id="header">
@@ -68,7 +69,9 @@
 			</div>
 		</div>
 	</div>
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script th:src="@{/resources/scripts/jquery/jquery-1.10.2.js}"></script>
+	<script th:src="@{/resources/scripts/jquery/jquery-ui-1.10.3.custom.js}"></script>
+	<script th:src="@{/resources/scripts/modernizr/modernizr.custom2.6.3.js}"></script>
 	<script tiles:substituteby="scripts"></script>
 </body>
 </html>

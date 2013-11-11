@@ -9,19 +9,15 @@
 <link rel="stylesheet" type="text/css" href="../../../resources/css/body.css" th:href="@{/resources/css/body.css}" />
 <link tiles:fragment="css" rel="stylesheet" type="text/css" href="../../../resources/css/admin.css" th:href="@{/resources/css/admin.css}" />
 <link rel="stylesheet" type="text/css" href="../../../resources/css/footer.css" th:href="@{/resources/css/footer.css}" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/jquery/custom-theme/jquery-ui-1.10.3.custom.css" />
 </head>
 <body>
 	<div id="main" tiles:fragment="content">
 		<div id="mainbackground">
 			<div class="container">
 				<div id="content">
-					<ul id="onglets">
-						<li th:text="#{admin.form.distillery.title}">Distillerie</li>
-						<li th:text="#{admin.form.bottle.title}">Bouteille</li>
-						<li th:text="#{admin.form.review.title}">Évaluation</li>
-					</ul>
+					<h3 class="titre" th:text="#{admin.form.distillery.title}">Distillerie</h3>
 					<div id="distillery-form" class="form">
-						<span class="titre" th:text="#{admin.form.distillery.title}">Distillerie</span>
 						<form action="#" th:action="@{/admin/distillery/}" th:object="${distillery}" method="POST">
 							<label for="name" th:text="#{admin.form.name.label}">Nom:</label><span class="required">*</span>
 							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
@@ -40,13 +36,13 @@
 							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
 						</form>
 					</div>
+					<h3 class="titre" th:text="#{admin.form.bottle.title}">Bouteille</h3>
 					<div id="bottle-form" class="form">
-						<span class="titre" th:text="#{admin.form.bottle.title}">Bouteille</span>
 						<form action="#" th:action="@{/admin/bottle/}" th:object="${bottle}" method="POST">
 							<label for="name" th:text="#{admin.form.name.label}">Nom:</label><span class="required">*</span>
 							<input type="text" id="name" name="name" value="" required="required" th:field="*{name}"/>
 							<label for="distillery" th:text="#{admin.form.bottle.distillery.label}">Distillerie:</label><span class="required">*</span>
-							<select id="distillery" th:field="*{distillery}">
+							<select id="distillery" th:field="*{distillery}" required="required">
 				                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
 				                <option th:each="dist : ${distilleries}" th:value="${dist.id}" th:text="${dist.name}" />
 				            </select>
@@ -71,32 +67,72 @@
 							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
 						</form>
 					</div>
+					<h3 class="titre" th:text="#{admin.form.review.title}">Évaluation</h3>
 					<div id="review-form" class="form">
-						<span class="titre" th:text="#{admin.form.review.title}">Évaluation</span>
 						<form action="#" th:action="@{/admin/review/}" th:object="${review}" method="POST">
 							<label for="author" th:text="#{admin.form.author.label}">Auteur:</label><span class="required">*</span>
 							<input type="text" id="author" name="author" value="" required="required" th:field="*{author}"/>
 							<label for="bottle" th:text="#{admin.form.review.bottle.label}">Bouteille:</label><span class="required">*</span>
-							<select id="bottle" th:field="*{bottle}">
+							<select id="bottle" th:field="*{bottle}" required="required">
 				                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
 				                <option th:each="bot : ${bottles}" th:value="${bot.id}" th:text="${bot.name}" />
 				            </select>
 				            <label for="rating" th:text="#{admin.form.review.rating.label}">Note:</label><span class="required">*</span>
 				            <input type="number" id="rating" name="rating" value="" th:field="*{rating}" required="required" min="0" pattern="^\d+(\.|\,)\d{1}$" step="0.1"/>
-				            <label for="notes" th:text="#{admin.form.review.notes.label}">Description: </label>
+				            <label for="notes" th:text="#{admin.form.review.notes.label}">Description:</label>
 							<textarea id="notes" name="notes" th:field="*{notes}"></textarea>
 							<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
 						</form>
+					</div>
+					<div id="accordion">
+						<h3 th:text="#{admin.form.activity.title}">Activité</h3>
+						<div id="activity-form" class="form">
+							<form action="#" th:action="@{/admin/activity/}" th:object="${activity}" method="POST">
+								<label for="title" th:text="#{admin.form.title.label}">Titre:</label><span class="required">*</span>
+								<input type="text" id="title" name="title" value="" required="required" th:field="*{title}"/>
+								<label for="date" th:text="#{admin.form.activity.date.label}">Date:</label>
+								<input type="date" name="date" />
+								<label for="category" th:text="#{admin.form.activity.category.label}">Categorie:</label>
+								<select id="category" th:field="*{category}">
+					                <option value="" th:text="#{admin.form.select.prompt}">Choisir</option>
+					                <option th:each="cat : ${activityCategories}" th:value="${cat}" th:text="#{${'enum.activity.category.' + cat}}" />
+					            </select>
+					            <label for="registrationUrl" th:text="#{admin.form.activity.registrationUrl.label}">URL pour réservations:</label>
+								<input type="text" id="registrationUrl" name="registrationUrl" value="" th:field="*{registrationUrl}"/>
+								<label for="description" th:text="#{admin.form.description.label}">Description:</label><span class="required">*</span>
+								<textarea id="description" name="description" th:field="*{description}"></textarea>
+								<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
+							</form>
+						</div>
+						<h3 th:text="#{admin.form.news.title}">Nouvelle</h3>
+						<div id="news-form" class="form">
+							<form action="#" th:action="@{/admin/news/}" th:object="${news}" method="POST">
+								<label for="title" th:text="#{admin.form.title.label}">Titre:</label><span class="required">*</span>
+								<input type="text" id="title" name="title" value="" required="required" th:field="*{title}"/>
+								<label for="author" th:text="#{admin.form.author.label}">Auteur:</label><span class="required">*</span>
+								<input type="text" id="author" name="author" value="" required="required" th:field="*{author}"/>
+								<label for="description" th:text="#{admin.form.description.label}">Description:</label><span class="required">*</span>
+								<textarea id="description" name="description" th:field="*{description}"></textarea>
+								<input id="submit-button" type="submit" value="Sauvegarder" th:value="#{admin.form.submit.value}"/>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js" th:remove="all"></script>
+	<script src="../../../resources/scripts/jquery/jquery-1.10.2.js"></script>
+	<script src="../../../resources/scripts/jquery/jquery-ui-1.10.3.custom.js"></script>
+	<script src="../../../resources/scripts/modernizr/modernizr.custom2.6.3.js"></script>
 	<script tiles:fragment="scripts">
-		$("li").click(function () {
-	      $(this).toggleClass("test");
-	    });
+		$(function() {
+	    	$("#accordion").accordion({ heightStyle: "content" });
+	    	
+	    	//if (!Modernizr.inputtypes.date) {
+	    	    $('input[type=date]').datepicker().prop('type','text');
+	    	//}
+	    	
+	  	});
 	</script>
 </body>
 </html>

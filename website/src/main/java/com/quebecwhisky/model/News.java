@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author jpshields
@@ -18,12 +19,13 @@ import javax.persistence.TemporalType;
 public class News extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String _title;
 	private String _description;
 	private String _author;
 	private Date _created;
 
+	@NotNull
 	@Column
 	public String getTitle() {
 		return _title;
@@ -33,6 +35,7 @@ public class News extends AbstractEntity {
 		_title = title;
 	}
 
+	@NotNull
 	@Column
 	public String getDescription() {
 		return this._description;
@@ -42,6 +45,7 @@ public class News extends AbstractEntity {
 		_description = description;
 	}
 
+	@NotNull
 	@Column
 	public String getAuthor() {
 		return _author;
@@ -51,7 +55,8 @@ public class News extends AbstractEntity {
 		this._author = author;
 	}
 
-	@Column
+	@NotNull
+	@Column(unique = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreated() {
 		return _created;
