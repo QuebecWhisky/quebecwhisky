@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,4 +43,13 @@ public class BottleRestController {
 		return "bottles";
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String getBottle(@PathVariable Long id, Map<String, Object> model) {
+		
+		Bottle bottle = bottleService.findById(id);
+		model.put("bottle", bottle);
+		
+		return "bottle";
+	}
+	
 }

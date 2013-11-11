@@ -10,16 +10,6 @@
 	<import resource="classpath:ctx/baseCtx.xml" />
 
 	<!-- ORM -->
-	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jpa.db.driverClassName}" />
-		<property name="url" value="${jpa.db.url}" />
-		<property name="username" value="${jpa.db.username}" />
-		<property name="password" value="${jpa.db.password}" />
-		<property name="initialSize" value="5" />
-		<property name="maxActive" value="10" />
-	</bean-->
-
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 		<property name="driverClass" value="${jpa.db.driverClassName}" />
 		<property name="jdbcUrl" value="${jpa.db.url}" />

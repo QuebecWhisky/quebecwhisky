@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.quebecwhisky.model.Activity;
+import com.quebecwhisky.model.Bottle;
 import com.quebecwhisky.model.News;
 import com.quebecwhisky.service.IActivityService;
+import com.quebecwhisky.service.IBottleService;
 import com.quebecwhisky.service.INewsService;
 import com.quebecwhisky.web.form.Search;
 
@@ -32,6 +34,9 @@ public class HomeRestController {
 
 	@Inject
 	private INewsService _newsService;
+
+	@Inject
+	private IBottleService _bottleService;
 	
 	// todo cache this
 	@ModelAttribute("activity")
@@ -45,6 +50,12 @@ public class HomeRestController {
 		return this._newsService.getRecentNews(4);
 	}
 
+	// todo cache this
+	@ModelAttribute("bottles")
+	public List<Bottle> getRecentReviews() {
+		return this._bottleService.getRecentReviews(5);
+	}
+	
 	@ModelAttribute("search")
 	public Search getSearchForm() {
 		return new Search();

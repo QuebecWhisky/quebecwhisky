@@ -3,6 +3,7 @@
  */
 package com.quebecwhisky.model;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,8 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -27,7 +30,8 @@ import javax.validation.constraints.NotNull;
 public class Review extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
-
+	private static final DecimalFormat FORMAT = new DecimalFormat("###.#");
+	
 	private Bottle _bottle;
 	private String _author;
 	private Double _rating;
@@ -59,6 +63,7 @@ public class Review extends AbstractEntity {
 	@Column
 	@Digits(integer = 3, fraction = 1)
 	@Min(0)
+	@Max(100)
 	public Double getRating() {
 		return _rating;
 	}
@@ -86,6 +91,11 @@ public class Review extends AbstractEntity {
 		this._created = created;
 	}
 
+	@Transient
+	public String getFormattedRating() {
+		return FORMAT.format(this._rating);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

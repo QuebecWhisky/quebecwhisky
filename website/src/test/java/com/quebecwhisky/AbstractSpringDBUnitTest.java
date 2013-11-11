@@ -8,7 +8,7 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.xml.XmlDataSet;
-import org.dbunit.ext.hsqldb.HsqldbDataTypeFactory;
+import org.dbunit.ext.h2.H2DataTypeFactory;
 import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -31,7 +31,8 @@ public abstract class AbstractSpringDBUnitTest {
 					jdbcConnection);
 			DatabaseConfig config = connection.getConfig();
 			config.setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY,
-					new HsqldbDataTypeFactory());
+			//		new HsqldbDataTypeFactory());
+					new H2DataTypeFactory());
 			DatabaseOperation.CLEAN_INSERT.execute(connection, new XmlDataSet(
 					getTestDataResource().getInputStream()));
 		} finally {

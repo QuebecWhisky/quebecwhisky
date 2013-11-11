@@ -36,6 +36,11 @@ public class BottleServiceImpl implements IBottleService {
 	}
 
 	@Override
+	public List<Bottle> getRecentReviews(Integer bottlesCount) {
+		return this._bottleDao.getRecentReviews(bottlesCount);
+	}
+	
+	@Override
 	@Transactional(readOnly = false)
 	public void persist(Bottle bottle) {
 		_bottleDao.persist(bottle);

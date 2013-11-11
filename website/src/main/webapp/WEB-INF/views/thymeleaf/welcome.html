@@ -16,12 +16,49 @@
 			<div class="container">
 				<div id="content">
 					<div id="evaluations">
-						<a class="all_evals" href="" th:text="#{welcome.evaluations.link_all_evals}">toutes les évaluations</a>
+						<a class="all_evals" href="" th:href="@{/review/}" th:text="#{welcome.evaluations.link_all_evals}">toutes les évaluations</a>
 						<div class="title" th:text="#{welcome.evaluations.title}">évaluations</div>
+						<div id="bottles">
+							<div id="bottle" th:each="bottle : ${bottles}" >
+								<table th:if="${bottleStat.first}">
+									<tr>
+										<td>
+											<img src="../../../resources/images/bottles/no_bottle.jpg" th:src="@{/resources/images/bottles/no_bottle.jpg}" />
+										</td>
+										<td>
+											<a href="" th:text="${bottle.name}" th:href="@{'/bottle/' + ${bottle.id}}">Jim Beam Devil's Cut</a>
+											<br/>
+											<div th:each="review : ${bottle.reviews}" th:text="${review.author} + ' ' + ${review.formattedRating} + '%'">AG 81%</div>  
+											<div th:remove="all">RV 87.5%</div>
+											<div th:remove="all">PB 82%</div>
+										</td>
+									</tr>
+								</table>
+								<a th:if="${not bottleStat.first}" href="" th:text="${bottle.name}" th:href="@{'/bottle/' + ${bottle.id}}">Jim Beam Devil's Cut</a>
+								<br th:if="${not bottleStat.first}"/>
+								<span th:if="${not bottleStat.first}" th:each="review : ${bottle.reviews}" th:text="${review.author} + ' ' + ${review.formattedRating} + '% '">AG 81% RV 87.5% PB 82%</span>
+							</div>
+							<div id="bottle" th:remove="all" >
+								<a href="" th:text="*{}">Zeppelin Michigan Single Malt</a><br/>
+								<span>AG 81% RV 86.5% PB 85%</span>
+							</div>
+							<div id="bottle" th:remove="all" >
+								<a href="" th:text="*{}">Pears Lyon Reserve</a><br/>
+								<span>AG 78% RV 81%</span>
+							</div>
+							<div id="bottle" th:remove="all" >
+								<a href="" th:text="*{}">Balcones Baby Blue Corn</a><br/>
+								<span>AG 86% RV 87%</span>
+							</div>
+							<div id="bottle" th:remove="all" >
+								<a href="" th:text="*{}">MB Roland Black Dog</a><br/>
+								<span>AG 86% RV 93% PB 92%</span>
+							</div>
+						</div>				
 					</div>
 					<div id="next_activity">
 						<div class="title" th:text="#{welcome.activity.title}">à venir</div>
-						<div th:object="${activity}" th:if="${activity}">
+						<div id="activity" th:object="${activity}" th:if="${activity}">
 							<span class="date" th:text="*{#dates.format(date,'dd MMMM yyyy')}">16 janvier 2011</span><br/>
 							<span class="categorie" th:text="*{category}">Dégustation par dizaine</span><br/>
 							<a href="" th:text="#{activities.registration}">Inscription</a>

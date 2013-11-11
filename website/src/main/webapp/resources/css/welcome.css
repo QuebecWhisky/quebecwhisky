@@ -1,30 +1,36 @@
+/* titre de toutes les sections */
+div.title {
+	margin-bottom: 20px;
+	font: bold 1.3em candara, sans-serif;
+	text-transform: uppercase;
+}
+
+/* Activités */
 #next_activity {
 	padding: 20px 0px 30px 30px;
 	width: 410px;
 	background: url(../images/body/indicator.png) no-repeat 5px 5px, rgba(0,0,0,0.7);
 }
 
-#next_activity a {
+#activity {
+	padding-bottom: 10px;
+}
+
+#activity a {
 	color: #FFFFFF;
 	padding-right: 15px;
 	background: url(../images/body/white_arrow.png) no-repeat 100% 50%;
 }
 
-/* pareil à la section news */
-#next_activity div.title {
-	margin-bottom: 20px;
-	font: bold 1.3em candara, sans-serif;
-	text-transform: uppercase;
-}
-
-#next_activity span.date {
+#activity span.date {
 	color: #F9A11C; /*E08E10*/
 }
 
-#next_activity span.categorie {
+#activity span.categorie {
 	font: bold 1.0em candara, sans-serif;
 }
 
+/* Nouvelles */
 #news {
 	margin-top: 15px;
 	padding: 20px 0px 30px 30px;
@@ -33,12 +39,6 @@
 	color: #FFFFFF;
 }
 
-/* pareil à la section next_activity */
-#news div.title {
-	margin-bottom: 20px;
-	font: bold 1.3em candara, sans-serif;
-	text-transform: uppercase;
-}
 
 #article {
 	width: 370px;
@@ -59,19 +59,14 @@
 	background: url(../images/body/brown_arrow.png) no-repeat 100% 50%;
 }
 
+/* Évaluations */
 #evaluations {
 	float: right;
-	padding: 20px 30px 0px 30px;
+	padding: 20px 30px 30px 30px;
 	width: 410px;
 	background: rgba(0,0,0,0.7);
 }
 
-/* pareil à la section news */
-#evaluations div.title {
-	margin-bottom: 20px;
-	font: bold 1.3em candara, sans-serif;
-	text-transform: uppercase;
-}
 #evaluations a.all_evals {
 	float: right;
 	color: #FFFFFF;
@@ -80,4 +75,39 @@
 	background: url(../images/body/brown_arrow.png) no-repeat 100% 50%;
 	font: bold 0.7em candara, sans-serif;
 	text-transform: uppercase;
+}
+
+#bottles div:first-child {
+	border: 1px solid #858280;
+	padding-bottom: 0px;
+	margin-bottom: 15px;
+}
+
+#bottle img {
+	display: block;
+}
+
+#bottle table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+#bottle table td {
+	width: 50%;
+}
+
+#bottle td>a:first-of-type {
+	font-size: 1.1em;
+	font-weight: bold; 
+}
+
+#bottle {
+	padding-bottom: 10px;
+}
+
+#bottle a {
+	color: #E4651C;
+	padding-right: 15px;
+	background: url(../images/body/brown_arrow.png) no-repeat 100% 50%;
+	display: inline;
 }
