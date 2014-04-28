@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<table name="activity">
+		<column>title</column>
+		<column>description</column>
+		<column>category</column>
+		<column>date</column>
+		<column>registrationUrl</column>
+		<row>
+			<value>Tasting 1</value>
+			<value>Desc Tasting 1</value>
+			<null />
+			<value>2014-01-02 19:00:00</value>
+			<null />
+		</row>
+		<row>
+			<value>Tasting 2</value>
+			<value>Desc Tasting 2</value>
+			<value>TASTING</value>
+			<value>2014-03-10 19:00:00</value>
+			<null />
+		</row>
+		<row>
+			<value>Tasting 3</value>
+			<value>Desc Tasting 3</value>
+			<value>TASTING</value>
+			<value>2014-03-21 19:00:00</value>
+			<null />
+		</row>
+		<row>
+			<value>Tasting 4</value>
+			<value>Desc Tasting 4</value>
+			<value>TASTING</value>
+			<null />
+			<null />
+		</row>
+		<row>
+			<value>Tasting 5</value>
+			<value>Desc Tasting 5</value>
+			<value>TASTING</value>
+			<null />
+			<null />
+		</row>		
+	</table>
+	
+</dataset>

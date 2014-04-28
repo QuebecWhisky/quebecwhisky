@@ -41,7 +41,7 @@ public class HomeRestController {
 	// todo cache this
 	@ModelAttribute("activity")
 	public Activity getNextActivity() {
-		return this._activityService.getNextActivity(new Date());
+		return this._activityService.getNextScheduledActivity(new Date());
 	}
 
 	// todo cache this

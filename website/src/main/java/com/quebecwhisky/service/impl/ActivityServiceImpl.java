@@ -4,6 +4,7 @@
 package com.quebecwhisky.service.impl;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,9 +28,9 @@ public class ActivityServiceImpl implements IActivityService {
 	private IActivityDAO _activityDao;
 
 	@Override
-	public Activity getNextActivity(Date from) {
+	public Activity getNextScheduledActivity(Date from) {
 		Activity activity = null;
-		List<Activity> activities = getNextActivities(from, 1);
+		List<Activity> activities = getNextScheduledActivities(from, 1);
 		if (!activities.isEmpty()) {
 			activity = activities.get(0);
 		}
@@ -37,8 +38,16 @@ public class ActivityServiceImpl implements IActivityService {
 	}
 
 	@Override
+	public List<Activity> getNextScheduledActivities(Date from, Integer activitiesNumber) {
+		return _activityDao.getNextScheduledActivities(from, activitiesNumber);
+	}
+
+	@Override
 	public List<Activity> getNextActivities(Date from, Integer activitiesNumber) {
-		return _activityDao.getNextActivities(from, activitiesNumber);
+		List<Activity> activityList = new LinkedList<Activity>();
+		activityList.addAll(_activityDao.getTBDActivities());
+		activityList.addAll(this.getNextScheduledActivities(from, activitiesNumber));
+		return activityList;
 	}
 
 	@Override
