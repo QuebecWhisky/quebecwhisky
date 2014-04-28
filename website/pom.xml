@@ -5,7 +5,7 @@
 	<groupId>com.quebecwhisky.web</groupId>
 	<artifactId>website</artifactId>
 	<packaging>war</packaging>
-	<version>0.5.0</version>
+	<version>0.6.0-SNAPSHOT</version>
 	<name>Site web</name>
 	<url>http://maven.apache.org</url>
 
@@ -19,7 +19,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-version>3.2.3.RELEASE</spring-version>
 		<tiles.version>2.2.2</tiles.version>
-		<thymeleaf-version>2.0.18</thymeleaf-version>
+		<thymeleaf-version>2.0.19</thymeleaf-version>
 		<thymeleaf-extras-tiles2-version>2.0.0</thymeleaf-extras-tiles2-version>
 		<spring-security-version>3.1.4.RELEASE</spring-security-version>
 		<thymeleaf-extras-springsecurity3-version>2.0.0</thymeleaf-extras-springsecurity3-version>
